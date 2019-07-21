@@ -1,0 +1,16 @@
+FROM python:3.7-alpine //docker image yang digunakan
+MAINTAINER brainpy corp //Perusahaanmu
+
+ENV PYTHONUNBUFFERED 1 //Memberikan perintah docker ke mode unbuffered
+                        // memberikan realtime run dalam docker
+
+COPY  ./requirements.txt requirements.txt //copy semua file dari column ini ke kolum itu
+RUN pip install -r /requirements.txt //run install requirements ke dalam docker
+
+RUN mkdir /app //membuat directory folder didalam docker
+WORKDIR /app //menginisiasi kerja default doker
+COPY ./app /app //copy semua data dari ./app ke /app
+
+RUN adduser -D user //to add user to run application on docker
+USER user //activate user utuk run docker dan untuk tujuan kea amanan karena secara default menggunakan username root
+
