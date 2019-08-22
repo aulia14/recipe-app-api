@@ -97,7 +97,7 @@ class PrivateUserApiTests(TestCase):
 
     def setUp(self):
         self.user = create_user(
-            email='test@gmail.com',
+            email='tests@gmail.com',
             password='testpass',
             name='name'
         )
